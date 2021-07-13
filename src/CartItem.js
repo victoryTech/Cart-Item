@@ -14,6 +14,23 @@ class CartItem extends React.Component {
         // bind is help to bind it to its refrernce
         // this.increaseQuantity = this.increaseQuantity.bind(this);
         // or we can use arrow function
+
+        this.testing();
+    }
+
+    testing () {
+        const promise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('done');
+            }, 5000);
+        })
+        
+        promise.then (() => {
+            // setState act like a synchronous call
+            this.setState({ qty : this.state.qty + 10});
+            this.setState({ qty : this.state.qty + 10});
+            this.setState({ qty : this.state.qty + 10});
+        });
     }
 
     // using arrow function to find the event handler function refremnce
@@ -24,6 +41,8 @@ class CartItem extends React.Component {
         // title not depend on prevState where as quantity depend upon prev State
         // this.setState({
         //     qty: this.state.qty + 1
+        // }, () => {
+        //  console.log('this.state', this.state);
         // });
 
         // setState 2 form - if prevState required use this
@@ -31,8 +50,27 @@ class CartItem extends React.Component {
             return {
                 qty: prevState.qty + 1
             }
+        }, () => {
+            // this ius call back
+            // this will execute only when setStae ewsecutes completely
+            // coz setState is Asynchronous
+            console.log('this.state', this.state);
         });
     }
+    
+    // decrease event handler
+    decreaseQuantity = () => {
+        const { qty } = this.state;
+        if(qty === 0)
+            return;
+
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty - 1
+            }
+        });
+    }
+
     render () {
         // this is done coz we have to write this.state.title
         const { price, title, qty } = this.state;
@@ -60,7 +98,8 @@ class CartItem extends React.Component {
               <img 
                 alt="decrease" 
                 className="action-icons" 
-                src="https://image.flaticon.com/icons/svg/1665/1665612.svg" 
+                src="https://image.flaticon.com/icons/svg/1665/1665612.svg"
+                onClick={this.decreaseQuantity}
               />
               <img 
                 alt="delete" 
