@@ -15,23 +15,24 @@ class CartItem extends React.Component {
         // this.increaseQuantity = this.increaseQuantity.bind(this);
         // or we can use arrow function
 
-        this.testing();
+        // this.testing();
     }
 
-    testing () {
-        const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve('done');
-            }, 5000);
-        })
+    // testing () {
+    //     const promise = new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve('done');
+    //         }, 5000);
+    //     })
         
-        promise.then (() => {
-            // setState act like a synchronous call
-            this.setState({ qty : this.state.qty + 10});
-            this.setState({ qty : this.state.qty + 10});
-            this.setState({ qty : this.state.qty + 10});
-        });
-    }
+    //     promise.then (() => {
+    //         // setState act like a synchronous call in promise and in ajax calls
+    //         // 
+    //         this.setState({ qty : this.state.qty + 10});
+    //         this.setState({ qty : this.state.qty + 10});
+    //         this.setState({ qty : this.state.qty + 10});
+    //     });
+    // }
 
     // using arrow function to find the event handler function refremnce
     increaseQuantity = () => {
