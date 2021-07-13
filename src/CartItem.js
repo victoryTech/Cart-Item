@@ -3,6 +3,7 @@ import React from 'react';
 class CartItem extends React.Component {
     constructor () {
         super();
+        // default state
         this.state = {
             price : 999,
             title : 'Phone',
@@ -15,9 +16,22 @@ class CartItem extends React.Component {
         // or we can use arrow function
     }
 
-    // using arrow function to find the event lsitener function refremnce
+    // using arrow function to find the event handler function refremnce
     increaseQuantity = () => {
-        console.log('this', this);
+        // this.state.qty += 1;
+        console.log('this', this.state);
+        // setState form 1 when prevState is not require like an example 
+        // title not depend on prevState where as quantity depend upon prev State
+        // this.setState({
+        //     qty: this.state.qty + 1
+        // });
+
+        // setState 2 form - if prevState required use this
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        });
     }
     render () {
         // this is done coz we have to write this.state.title
