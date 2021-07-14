@@ -1,67 +1,13 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-
-    // testing () {
-    //     const promise = new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             resolve('done');
-    //         }, 5000);
-    //     })
-        
-    //     promise.then (() => {
-    //         // setState act like a synchronous call in promise and in ajax calls
-    //         // 
-    //         this.setState({ qty : this.state.qty + 10});
-    //         this.setState({ qty : this.state.qty + 10});
-    //         this.setState({ qty : this.state.qty + 10});
-    //     });
-    // }
-
-    // using arrow function to find the event handler function refremnce
-    increaseQuantity = () => {
-        // this.state.qty += 1;
-        console.log('this.state', this.state);
-        // setState form 1 when prevState is not require like an example 
-        // title not depend on prevState where as quantity depend upon prev State
-        // this.setState({
-        //     qty: this.state.qty + 1
-        // }, () => {
-        //  console.log('this.state', this.state);
-        // });
-
-        // setState 2 form - if prevState required use this
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty + 1
-            }
-        }, () => {
-            // this ius call back
-            // this will execute only when setStae ewsecutes completely
-            // coz setState is Asynchronous
-            console.log('this.state', this.state);
-        });
-    }
-    
-    // decrease event handler
-    decreaseQuantity = () => {
-        const { qty } = this.state;
-        if(qty === 0)
-            return;
-
-        this.setState((prevState) => {
-            return {
-                qty: prevState.qty - 1
-            }
-        });
-    }
-
     render () {
         // this is done coz we have to write this.state.title
         console.log('this.props', this.props);
         const { price, title, qty } = this.props.product;
       return (
         <div className="cart-item">
+          {this.props.jsx}
           <div className="left-block">
             <img style={styles.image} />
           </div>
@@ -79,13 +25,13 @@ class CartItem extends React.Component {
                 className="action-icons" 
                 src="https://image.flaticon.com/icons/svg/992/992651.svg"
                 // onClick={this.increaseQuantity.bind(this)}
-                onClick={this.increaseQuantity}
+                onClick = {() => this.props.onIncreaseQuantity(this.props.product) }
               />
               <img 
                 alt="decrease" 
                 className="action-icons" 
                 src="https://image.flaticon.com/icons/svg/1665/1665612.svg"
-                onClick={this.decreaseQuantity}
+                onClick = {this.decreaseQuantity}
               />
               <img 
                 alt="delete" 
