@@ -1,22 +1,6 @@
 import React from 'react';
 
 class CartItem extends React.Component {
-    constructor () {
-        super();
-        // default state
-        this.state = {
-            price : 999,
-            title : 'Phone',
-            qty: 1,
-            img: ''
-        }
-        // biinding the multiple event handler in construcor
-        // bind is help to bind it to its refrernce
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        // or we can use arrow function
-
-        // this.testing();
-    }
 
     // testing () {
     //     const promise = new Promise((resolve, reject) => {
@@ -37,7 +21,7 @@ class CartItem extends React.Component {
     // using arrow function to find the event handler function refremnce
     increaseQuantity = () => {
         // this.state.qty += 1;
-        console.log('this', this.state);
+        console.log('this.state', this.state);
         // setState form 1 when prevState is not require like an example 
         // title not depend on prevState where as quantity depend upon prev State
         // this.setState({
@@ -74,7 +58,8 @@ class CartItem extends React.Component {
 
     render () {
         // this is done coz we have to write this.state.title
-        const { price, title, qty } = this.state;
+        console.log('this.props', this.props);
+        const { price, title, qty } = this.props.product;
       return (
         <div className="cart-item">
           <div className="left-block">
