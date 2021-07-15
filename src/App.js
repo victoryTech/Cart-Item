@@ -45,6 +45,7 @@ class App extends React.Component {
     firebase
       .firestore()
       .collection('products')
+      // onSnapshot is observer any changes it detects
       .onSnapshot((snapshot) => {
         console.log(snapshot);
 
