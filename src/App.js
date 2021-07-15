@@ -47,6 +47,9 @@ class App extends React.Component {
     //   .firestore
     this.db
       .collection('products')
+      // .where('price', '==', 9999)
+      // .where('title', '==', 'Mobile Phone')
+      .orderBy('price', 'desc')
       // onSnapshot is observer any changes it detects
       .onSnapshot((snapshot) => {
         console.log(snapshot);
