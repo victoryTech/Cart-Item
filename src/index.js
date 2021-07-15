@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import * as serviceWorker from './serviceWorker';
+// import serviceWorker from './serviceWorker';
+// for this we have to made separate file for with .js extension
 // import * as firebase from 'firebase';
 import firebase from 'firebase';
 import 'firebase/firestore';
